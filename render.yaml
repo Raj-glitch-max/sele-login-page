@@ -1,0 +1,20 @@
+# render.yaml
+services:
+  - type: web
+    name: sele-login-page
+    env: node
+    plan: free
+    buildCommand: |
+      cd client
+      npm install
+      npm run build
+      cd ../server
+      npm install
+    startCommand: node index.js
+    envVars:
+      - key: NODE_VERSION
+        value: 18
+      - key: PORT
+        value: 10000
+      - key: mongodb+srv://raj-p:898rdp1242@deepfake-detection.hza0bt7.mongodb.net/?retryWrites=true&w=majority&appName=deepfake-detection
+        value: your_mongodb_connection_string_here
