@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const path = require('path'); // Only declare this once
+const path = require('path');
 const AuthRouter = require('./Routes/AuthRouter');
 const ProductRouter = require('./Routes/ProductRouter');
 
@@ -26,6 +26,7 @@ app.get('/ping', (req, res) => {
 
 // Serve static files from the React app (production build)
 if (process.env.NODE_ENV === 'production') {
+    // Correct the path to the build folder for React frontend
     app.use(express.static(path.join(__dirname, '../client/build')));
 
     // The catch-all handler for React routing (works with React Router)
